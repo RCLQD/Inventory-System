@@ -1,0 +1,951 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; 
+}
+
+body{
+    background-color: #1c202b;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* MAIN-BODY AREA */
+main{
+    width: 100%;
+    background-color: #1c202b;
+    padding: 30px;
+}
+.highlight {
+    background-color: gray;
+    font-weight: 600;
+    border-radius: 2.5px;
+}
+/* HEADER-CONTENT AREA */
+.header{
+    width: auto;
+    height: auto;
+}
+.header h1{
+    color: #08c6f6;
+    font-size: 32px;
+    font-weight: 600;
+}
+.header p{
+    color: #ededed; 
+    font-size: 16px;
+}
+.FP{
+    display: block;
+}
+.SP{
+    display: none;  
+}
+
+/* SUB HEADER-CONTENT AREA */
+.sub-header{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.search-div{
+    width: 60%;
+    height: 45px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: 1.5px solid white;
+    transition: transform .1s ease;
+}
+.search-div:focus,
+.search-div:active {
+    transform: scale(1.0099);
+}
+.search-div form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.search-div button{
+    width: 4%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    border: none;
+    background-color: transparent;
+}
+.search-div svg{
+    transition: transform .1s ease;
+    cursor: pointer;
+}
+.search-div svg:active{
+    transform: scale(0.9);
+}
+.searchbar{
+    width: 96%;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    background-color: #1c202b;
+    border: none;
+    padding: 0 0 0 10px;
+    transition: transform .1s ease;
+}
+
+.searchbar::placeholder, .searchbar:focus{
+    color: white;
+    outline: none;
+}
+.addbtn{
+    width: 15%;
+    height: 45px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #1ebfc9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform .1s ease;
+}
+.addbtn:active{
+    transform: scale(0.98);
+}
+
+/* LICENCE UPDATE-CONTENT AREA */
+.lic-update{
+    width: 100%;
+    height: 190px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #13131b;
+}
+.lics-div{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+.active-lic{
+    width: 48.5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    background-color: #1c202b;
+}
+.active-lic h1{
+    font-size: 35px;
+    font-weight: 500;
+    color: #0987ff;
+}
+.expiry-lic{
+    width: 48.5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    background-color: #1c202b;
+}
+.expiry-lic h1{
+    font-size: 35px;
+    font-weight: 500;
+    color: #fe0000;
+}
+.expiry-list{
+    width: 59%;
+    color: white;
+}
+.expiry-list h1{
+    font-size: 18px;
+    font-weight: 500;
+    color: #fe0000;
+    text-align: center;
+    background-color: #13131b;
+}
+.e-list{
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+}
+.e-list::-webkit-scrollbar{
+    display: none;
+}
+.e-list th{
+    width: 50%;
+    height: 30px;
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    background-color: #13131b;
+
+}
+.e-list table, th, td{
+    border-bottom: 1px solid whitesmoke;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: #13131b;
+}
+/* MAIN TABLE-CONTENT AREA */
+.main-table{
+    width: 100%;
+    height: 470px;
+    margin-top: 20px;
+    color: white;
+    overflow-y: scroll; 
+}
+.main-table::-webkit-scrollbar{
+    display: none;
+}
+.main-table table{
+    text-align: center;
+    border-collapse: collapse;
+    background-color: #13131b;
+}
+.main-table th{
+    height: 50px;
+    border-collapse: collapse;
+    border: none;
+    text-align: center;
+    background-color: #13131b;
+    top: 0;
+    position: sticky;
+    z-index: 2;
+}
+.main-table td{
+    height: 60px;
+    border-bottom: 1.5px solid #2a3041;
+    text-align: center;
+    background-color: #1a1e29;
+}
+.ED-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7%;
+}
+.edit{
+    width: 85px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #ffab12;
+}
+.delete{
+    width: 85px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #fe0000;
+}
+.edit:active, .delete:active{
+    transform: scale(0.95);
+}
+
+/* MODAL SECTION */
+#modal {
+    width: 60%;
+    height: 80%;
+    border-radius: 10px;
+    background-color: #1c202b;
+    border-color: #1c202b;
+    position: fixed;
+    padding: 0.2% 0.2%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 5px 10px 0 rgba(55, 55, 55, 0.5),
+        5px 0 10px 0 rgba(55, 55, 55, 0.5);
+}
+#modal::-webkit-scrollbar{
+    display: none;
+}
+#modal[open] {
+    animation: appear .3s cubic-bezier(0, 1.8, 1, 1.8);
+}
+
+#modal::backdrop {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(-50%) scale(1);
+    }
+}
+.close-mod{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+#closeBTN{
+    transition: transform .1s ease;
+}
+#closeBTN:active{
+    transform: scale(0.9);
+}
+.M-header{
+    width: 100%;
+    height: 10%;
+    padding: 0 2.5%;
+    display: flex;
+    align-items: center;
+}
+.M-header h1{
+    font-size: 30px;
+    font-weight: 600;
+    color: #08c6f6;
+}
+.addform{
+    width: 100%;
+    height: 70%;
+}
+.MM-body{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+.MMsub-body{
+    width: 95%;
+    height: 100%;
+    border-top: 2.5px solid white;
+    border-bottom: 2.5px solid white;
+}
+.MMsub-body h1{
+    width: 100%;
+    height: 18%;
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.input-body{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+}
+.input-body span{
+    color: #0987ff;
+}
+.Fname-P, .Address-P, .LicNo-P, .EDate-P{
+    width: 100%;
+}
+.Fname-P p, .Address-P p, .LicNo-P p, .EDate-P p{
+    color: white;
+    font-size: 14px;
+}
+.Fname-P input, .Address-P input, .LicNo-P input, .EDate-P input{
+    width: 100%;
+    color: white;
+    padding: 0 2.5px;
+    border: none;
+    border-bottom: 1px solid gray;
+    background-color: transparent;
+}
+.Fname-P input::placeholder, .Address-P input::placeholder, .LicNo-P input::placeholder, .EDate-P input::placeholder{
+    color: gray;
+}
+.Fname-P input:focus, .Address-P input:focus, .LicNo-P input:focus, .EDate-P input:focus {
+    outline: none;
+}
+.EDate-P input[type="date"], .EEDate-P input[type="date"]{
+    cursor: pointer;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    font-size: 22px;
+    cursor: pointer;
+}
+.Btn-body{
+    width: 100%;
+    height: 22%;
+    padding: 1% 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#M-btn{
+    width: 40%;
+    height: 60%;
+    font-size: 20px;
+    font-weight: 600;
+    border: 1px solid #08c6f6;
+    border-radius: 5px;
+    background-color: #08c6f6;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+#M-btn:active{
+    transform: scale(0.98);
+}
+
+/* EDIT-INFORMATION SECTION */
+.Edmodal {
+    width: 60%;
+    height: 80%;
+    border-radius: 10px;
+    background-color: #1c202b;
+    border-color: #1c202b;
+    position: fixed;
+    padding: 0.2% 0.2%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 5px 10px 0 rgba(55, 55, 55, 0.5),
+        5px 0 10px 0 rgba(55, 55, 55, 0.5);
+}
+.Edmodal::-webkit-scrollbar{
+    display: none;
+}
+.Edmodal[open] {
+    animation: appear .3s cubic-bezier(0, 1.8, 1, 1.8);
+}
+
+.Edmodal::backdrop {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(-50%) scale(1);
+    }
+}
+.Eclose-mod {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+#EcloseBTN{
+    transition: transform .1s ease;
+}
+#EcloseBTN:active{
+    transform: scale(0.9);
+}
+.EM-header{
+    width: 100%;
+    height: 10%;
+    padding: 0 2.5%;
+    display: flex;
+    align-items: center;
+}
+.EM-header h1{
+    font-size: 30px;
+    font-weight: 600;
+    color: #08c6f6;
+}
+.editform{
+    width: 100%;
+    height: 70%;
+}
+.EMM-body{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+.EMMsub-body{
+    width: 95%;
+    height: 100%;
+    border-top: 2.5px solid white;
+    border-bottom: 2.5px solid white;
+}
+.EMMsub-body h1{
+    width: 100%;
+    height: 18%;
+    font-size: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.Einput-body{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+}
+.Einput-body span{
+    color: #0987ff;
+}
+.EFname-P, .EAddress-P, .ELicNo-P, .EEDate-P{
+    width: 100%;
+}
+.EFname-P p, .EAddress-P p, .ELicNo-P p, .EEDate-P p{
+    color: white;
+    font-size: 14px;
+}
+.EFname-P input, .EAddress-P input, .ELicNo-P input, .EEDate-P input{
+    width: 100%;
+    height: 90%;
+    color: white;
+    padding: 0 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: transparent;
+}
+.EFname-P input::placeholder, .EAddress-P input::placeholder, .ELicNo-P input::placeholder, .EEDate-P input::placeholder{
+    color: gray;
+}
+.EFname-P input:focus, .EAddress-P input:focus, .ELicNo-P input:focus, .EEDate-P input:focus {
+    outline: none;
+}
+.EBtn-body{
+    width: 100%;
+    height: 22%;
+    padding: 0 2.5%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2%;
+}
+#ECM-btn{
+    width: 25%;
+    height: 50%;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    outline: none;
+    border: 1px solid #fe0000;
+    border-radius: 5px;
+    background-color: #fe0000;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+#EM-btn{
+    width: 25%;
+    height: 50%;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    outline: none;
+    border: 1px solid #1678b9;
+    border-radius: 5px;
+    background-color: #1678b9;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+#ECM-btn:active, #EM-btn:active{
+    transform: scale(0.98);
+}
+
+/* DELETE MODAL SECTION */
+.DelModal {
+    width: 50%;
+    height: 55%;
+    border-radius: 10px;
+    background-color: #1c202b;
+    border-color: #1c202b;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 5px 10px 0 rgba(55, 55, 55, 0.5),
+        5px 0 10px 0 rgba(55, 55, 55, 0.5);
+    padding: 2%;
+    outline: none;
+}
+.DelModal::-webkit-scrollbar{
+    display: none;
+}
+.DelModal[open] {
+    animation: appear .3s cubic-bezier(0, 1.8, 1, 1.8);
+}
+
+.DelModal::backdrop {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(-50%) scale(1);
+    }
+}
+.DHeader{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 5%;
+}
+.DHeader h1{
+    color: #fe0000;
+    font-size: 33px;
+    font-weight: 600;
+    margin-bottom: 1%;
+}
+.DHeader p{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 1px;
+}
+.Dmain-con{
+    width: 100%;
+    height: 13%;
+    display: flex;
+    align-items: center;
+    gap: 1%;
+    border-radius: 5px;
+    border: 1px solid red;
+    padding: 0 2%;
+    margin-bottom: 5%;
+    background-color: #fff1f1;
+}
+hr{
+    border-radius: 5px;
+    margin-bottom: 4%;
+}
+.DBtn-body{
+    width: 100%;
+    height: 20%;
+    padding: 0 2.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+#DCM-btn{
+    width: 30%;
+    height: 65%;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    outline: none;
+    border: 1px solid #00C851;
+    border-radius: 10px;
+    background-color: #00C851;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+#DM-btn{
+    width: 30%;
+    height: 65%;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    outline: none;
+    border: 1px solid #fe0000;
+    border-radius: 10px;
+    background-color: #fe0000;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+#DCM-btn:active, #DM-btn:active{
+    transform: scale(0.98);
+}
+
+/* CELLPHONE-CONTENT AREA */
+@media (max-width: 844px) {
+    main{
+        padding: 15px;
+    }
+    .header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .header h1{
+        font-size: 24px;
+    }
+    .header p{
+        font-size: 13px;
+    }
+    .FP{
+      display: none;  
+    }
+    .SP{
+        display: block;  
+    }
+    .sub-header{
+        height: 35px;
+        margin-top: 30px;
+    }
+    .search-div{
+        height: 100%;
+    }
+    .search-div svg{
+        width: 10%;
+        width: 15px;
+        height: 15px;
+    }
+    .searchbar{
+        width: 90%;
+        height: 100%;
+        font-size: 11px;
+        padding: 0 0 0 5px;
+    }
+    .addbtn{
+        width: 27%;
+        height: 100%;
+        font-size: 11px;
+    }
+    .lic-update{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+    .lics-div{
+        width: 100%;
+        height: 90px;
+    }
+    .active-lic h1, .expiry-lic h1{
+        font-size: 28px;
+    }
+    .active-lic p, .expiry-lic p{
+        font-size: 13px;
+    }
+    .expiry-list{
+        margin-top: 20px;
+        width: 100%;
+    }
+    .expiry-list h1{
+        font-size: 14px;
+    }
+    .e-list{
+        height: 130px;
+        overflow-y: scroll;
+    }
+    .e-list th, td{
+        font-size: 8px;
+    }
+    .main-table{
+        width: 100%;
+        height: 335px;
+    }
+    .main-table th, td{
+        font-size: 8px;
+    }
+    .ED-container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 0;
+    }
+    .edit, .delete{
+        width: 27px;
+        height: 18px;
+    }
+    .edit svg, .delete svg{
+        width: 9px;
+        height: 9px;
+    }
+    #modal{
+        width: 85%;
+        height: 60%;
+        border-radius: 5px;
+    }
+    .close-mod {
+        width: 19px;
+        height: 18px;
+    }
+    #closeBTN{
+        width: 12px;
+        height: 12px;
+    }
+    .M-header{
+        padding: 0 5%;
+    }
+    .M-header h1{
+        font-size: 18px;
+    }
+    .addform{
+        width: 100%;
+        height: 87%;
+    }
+    .MMsub-body{
+        width: 90%;
+    }
+    .MMsub-body h1{
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .input-body{
+        width: 100%;
+        height: 78%;
+    }
+    .Fname-P p, .Address-P p, .LicNo-P p, .EDate-P p{
+        font-size: 10px;
+    }
+    .Fname-P input, .Address-P input, .LicNo-P input, .EDate-P input{
+        width: 100%;
+        height: 30%;
+        font-size: 9px;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        font-size: 10px;
+        cursor: pointer;
+    }
+    .Btn-body{
+        width: 100%;
+        height: 27%;
+    }
+    #M-btn{
+        width: 40%;
+        height: 35%;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    /* EDIT MODAL */
+    .Edmodal{
+        width: 85%;
+        height: 60%;
+        border-radius: 5px;
+    }
+    .Eclose-mod {
+        width: 19px;
+        height: 18px;
+    }
+    #EcloseBTN{
+        width: 12px;
+        height: 12px;
+    }
+    .EM-header{
+        padding: 0 5%;
+    }
+    .EM-header h1{
+        font-size: 18px;
+    }
+    .EMMsub-body{
+        width: 90%;
+    }
+    .EMMsub-body h1{
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .Einput-body{
+        width: 100%;
+        height: 78%;
+    }
+    .EFname-P p, .EAddress-P p, .ELicNo-P p, .EEDate-P p{
+        font-size: 10px;
+    }
+    .EFname-P input, .EAddress-P input, .ELicNo-P input, .EEDate-P input{
+        width: 100%;
+        height: 90%;
+        font-size: 9px;
+    }
+    .EBtn-body{
+        width: 100%;
+        height: 21%;
+        padding: 0 5%;
+    }
+    .EBtn-body form{
+        gap: 3%;
+    }
+    #ECM-btn{
+        width: 30%;
+        height: 30%;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    #EM-btn{
+        width: 30%;
+        height: 30%;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    /* DELETE MODAL */
+    .DelModal{
+        width: 85%;
+        height: 27%;
+        border-radius: 5px;
+        padding: 20px;
+    }
+    .DHeader h1{
+        font-size: 25px;
+    }
+    .DHeader p{
+        font-size: 8px;
+        letter-spacing: normal;
+    }
+    .Dmain-con p{
+        font-size: 12px;
+    }
+    .Dmain-con svg{
+        width: 16px;
+        height: 16px;
+    }
+    .DBtn-body{
+        height: 23%;
+    }
+    #DCM-btn{
+        width: 35%;
+        height: 70%;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    #DM-btn{
+        width: 35%;
+        height: 70%;
+        font-size: 13px;
+        font-weight: 600;
+    }
+}
