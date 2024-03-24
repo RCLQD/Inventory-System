@@ -44,6 +44,24 @@ main{
 .SP{
     display: none;  
 }
+.lgout{
+    background: transparent;
+    border: none;
+    font-weight: 500;
+    font-size: 15px;
+    color: red;
+    cursor: pointer;
+    text-decoration: none;
+}
+.lgout:hover{
+    transform: scale(1.1);
+    font-weight: bold;
+}
+.lgout:active{
+    color: white;
+    transform: scale(0.9);
+
+}
 
 /* SUB HEADER-CONTENT AREA */
 .sub-header{

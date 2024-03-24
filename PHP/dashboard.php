@@ -1,6 +1,13 @@
 <?php
     require('connection.php');
 
+    session_start();
+
+    if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+        header("Location: login.php");
+        exit();
+    }
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $fullName = $_POST['FName'];
         $address = $_POST['Address'];
@@ -10,6 +17,8 @@
         $sql = "INSERT INTO driversinventory (FName, Address, LicNo, ExpDate) VALUES ('$fullName', '$address', '$licenseNumber', '$expirationDate')";
 
         if ($conn->query($sql) === TRUE) {
+            // Set success message if the query is successful
+            $_SESSION['success_message'] = "Driver's Added Successfully. Please Click Ok to Proceed. Thank You!";
             header("Location: dashboard.php");
             exit();
         } else {
@@ -17,13 +26,14 @@
         }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="../JS/modal.js"></script>
     <script defer src="../JS/search.js"></script>
@@ -33,13 +43,14 @@
 </head>
 <body>
     <main>
-
         <div class="header">
             <h1>Inventory System</h1>
             <p class="FP">Driver's Licences of Philkoei International Inc.</p>
             <p class="SP">Driver's Licences of PKII</p>
         </div>
-        
+        <div style="width: 100%; display: flex; justify-content: end;">
+            <a href="logout.php" class="lgout">Logout</a>
+        </div>
         <div class="sub-header">
             <div class="search-div">
                 <form>
@@ -173,14 +184,14 @@
                         $expirationTimestamp = strtotime($row["ExpDate"]);
                         $currentTimestamp = time();
                         $daysLeft = floor(($expirationTimestamp - $currentTimestamp) / (60 * 60 * 24));
-                        if ($daysLeft < 0) {
-                            $expirationStatus = "Already Expired";
-                        } elseif ($daysLeft == 0) {
+                        if (date('Y-m-d', $currentTimestamp) == date('Y-m-d', $expirationTimestamp)) {
                             $expirationStatus = "Expiring today";
-                        } elseif ($daysLeft == 1) {
-                            $expirationStatus = "Expiring tomorrow";
+                        } elseif ($daysLeft < 0) {
+                            $expirationStatus = "Already Expired";
+                        } elseif (date('Y-m-d', strtotime('+1 day', $currentTimestamp)) == date('Y-m-d', $expirationTimestamp)) {
+                            $expirationStatus = "Expiring Tomorrow";
                         } else {
-                            $expirationStatus = $daysLeft . " days left";
+                            $expirationStatus = $daysLeft . " Days Left";
                         }        
                         // $editButtonId = "edit_" . $id;
                         // $editModalId = "modal_" . $id;
@@ -284,5 +295,19 @@
             </div>
         </dialog>
     </main>
+    <script>
+        <?php if(isset($_SESSION['success_message'])) : ?>
+            // Function to display success message in a pop-up modal
+            function showSuccessMessage(message) {
+                alert(message);
+            }
+
+            // Call the function to display the success message
+            showSuccessMessage("<?php echo $_SESSION['success_message']; ?>");
+            
+            // Unset the session variable after displaying the message
+            <?php unset($_SESSION['success_message']); ?>
+        <?php endif; ?>
+    </script>
 </body>
 </html>
