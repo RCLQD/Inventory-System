@@ -17,8 +17,7 @@
         $sql = "INSERT INTO driversinventory (FName, Address, LicNo, ExpDate) VALUES ('$fullName', '$address', '$licenseNumber', '$expirationDate')";
 
         if ($conn->query($sql) === TRUE) {
-            // Set success message if the query is successful
-            $_SESSION['success_message'] = "Driver's Added Successfully. Please Click Ok to Proceed. Thank You!";
+            $_SESSION['success_message'] = true;
             header("Location: dashboard.php");
             exit();
         } else {
@@ -33,22 +32,130 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/stylessss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="../JS/modal.js"></script>
     <script defer src="../JS/search.js"></script>
-    <script defer src="../JS/editmodal.js"></script>
+    <script defer src="../JS/editmodals.js"></script>
     <script defer src="../JS/deletemodal.js"></script>
+    <script defer src="../JS/addsuccess.js"></script>
     <title>License Inventory</title>
+    <style>
+        @keyframes slideInFromTop {
+            0% {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+        #UpdateMessage {
+            position: absolute;
+            top: 25px;
+            left: 37%;
+            transform: translateX(-50%);
+            animation: slideInFromTop 0.5s ease-out forwards;
+            z-index: 9999;
+        }
+        #UpdateMessageChild {
+            width: 500px;
+            height: 70px;
+            border: 3.5px solid #00c04b;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            gap: 4%;
+            padding: 0 4%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        @media (max-width: 844px) {            
+            #UpdateMessage {
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%) !important;
+                animation: slideInFromTop 0.5s ease-in-out !important;
+            }
+            
+            #UpdateMessageChild {
+                width: 300px !important;
+                height: 60px !important;
+            }
+            
+            #logo {
+                font-size: 25px !important;
+            }
+            
+            #main-text h3 {
+                font-size: 16px !important;
+            }
+            
+            #main-text h6 {
+                font-size: 10px !important;
+            }
+        }
+    </style>
 </head>
 <body>
+    <script>
+        setTimeout(function() {
+            var updateMessage = document.getElementById("UpdateMessage");
+            if (updateMessage) {
+                updateMessage.parentNode.removeChild(updateMessage);
+            }
+        }, 3000);
+    </script>
+    <!-- <div id="UpdateMessage">
+        <div id="UpdateMessageChild">
+            <span id="logo" style="color: #00c04b; font-size: 35px;"><i class="fas fa-check"></i></span>
+            <span id="main-text">
+                <h3 style="color: #00c04b; font-weight: 600;">Added Successfully</h3>
+                <h6 style="color: gray; font-weight: 600;">Driver's record has been added successfully.</h6>
+            </span>
+        </div>
+    </div> -->
+    <?php
+        if (isset($_SESSION['success_message'])) {
+            ?>
+                <div id="UpdateMessage">
+                    <div id="UpdateMessageChild">
+                        <span id="logo" style="color: #00c04b; font-size: 35px;"><i class="fas fa-check"></i></span>
+                        <span id="main-text">
+                            <h3 style="color: #00c04b; font-weight: 600;">Added Successfully</h3>
+                            <h6 style="color: gray; font-weight: 600;">Driver's record has been added successfully.</h6>
+                        </span>
+                    </div>
+                </div>
+            <?php
+            unset($_SESSION['success_message']);
+        }
+        
+        if (isset($_SESSION['update_success_message'])) {
+            ?>
+                <div id="UpdateMessage">
+                    <div id="UpdateMessageChild">
+                        <span id="logo" style="color: #00c04b; font-size: 35px;"><i class="fas fa-check"></i></span>
+                        <span id="main-text">
+                            <h3 style="color: #00c04b; font-weight: 600;">Edited Successfully</h3>
+                            <h6 style="color: gray; font-weight: 600;">Records has been updated successfully.</h6>
+                        </span>
+                    </div>
+                </div>
+            <?php
+            unset($_SESSION['update_success_message']);
+        }
+    ?>
     <main>
         <div class="header">
             <h1>Inventory System</h1>
             <p class="FP">Driver's Licences of Philkoei International Inc.</p>
             <p class="SP">Driver's Licences of PKII</p>
         </div>
-        <div style="width: 100%; display: flex; justify-content: end;">
+        <div class="lg">
             <a href="logout.php" class="lgout">Logout</a>
         </div>
         <div class="sub-header">
@@ -193,8 +300,6 @@
                         } else {
                             $expirationStatus = $daysLeft . " Days Left";
                         }        
-                        // $editButtonId = "edit_" . $id;
-                        // $editModalId = "modal_" . $id;
                     ?>
                         <tr>
                         <td id="name_<?php echo $id; ?>"><?php echo $row["FName"]; ?></td>
@@ -273,6 +378,10 @@
             </form>
         </dialog>
 
+        <script>
+
+        </script>
+
         <!-- DELETE INFORMATION -->
         <dialog id="Dmodal" class="DelModal">
             <div class="DHeader" style="margin-top: 2%;">
@@ -295,19 +404,5 @@
             </div>
         </dialog>
     </main>
-    <script>
-        <?php if(isset($_SESSION['success_message'])) : ?>
-            // Function to display success message in a pop-up modal
-            function showSuccessMessage(message) {
-                alert(message);
-            }
-
-            // Call the function to display the success message
-            showSuccessMessage("<?php echo $_SESSION['success_message']; ?>");
-            
-            // Unset the session variable after displaying the message
-            <?php unset($_SESSION['success_message']); ?>
-        <?php endif; ?>
-    </script>
 </body>
 </html>

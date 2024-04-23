@@ -1,4 +1,5 @@
 <?php
+session_start(); // Start session if not already started
 require('connection.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssssi", $FName, $Address, $LicNo, $EDate, $id);
 
         if ($stmt->execute()) {
+            $_SESSION['update_success_message'] = true;
             header("Location: dashboard.php");
             exit;
         } else {

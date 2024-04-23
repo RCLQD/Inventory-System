@@ -213,4 +213,8 @@ body {
         width: 90%;
         height: 40vh;
     }
+    .login-header h2{
+        font-size: 15px;
+        color: #033769;
+    }
 }
