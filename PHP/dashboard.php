@@ -38,7 +38,7 @@
     <script defer src="../JS/modal.js"></script>
     <script defer src="../JS/search.js"></script>
     <script defer src="../JS/editmodals.js"></script>
-    <script defer src="../JS/deletemodal.js"></script>
+    <script defer src="../JS/deletemodals.js"></script>
     <script defer src="../JS/addsuccess.js"></script>
     <title>License Inventory</title>
     <style>
@@ -109,15 +109,6 @@
             }
         }, 3000);
     </script>
-    <!-- <div id="UpdateMessage">
-        <div id="UpdateMessageChild">
-            <span id="logo" style="color: #00c04b; font-size: 35px;"><i class="fas fa-check"></i></span>
-            <span id="main-text">
-                <h3 style="color: #00c04b; font-weight: 600;">Added Successfully</h3>
-                <h6 style="color: gray; font-weight: 600;">Driver's record has been added successfully.</h6>
-            </span>
-        </div>
-    </div> -->
     <?php
         if (isset($_SESSION['success_message'])) {
             ?>
@@ -288,6 +279,7 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $id = $row["D_id"];
+                        $fullName = $row["FName"];
                         $expirationTimestamp = strtotime($row["ExpDate"]);
                         $currentTimestamp = time();
                         $daysLeft = floor(($expirationTimestamp - $currentTimestamp) / (60 * 60 * 24));
@@ -315,7 +307,7 @@
                                         <g><path class="st0" d="M107.73,1.31c-0.96-0.89-2.06-1.37-3.29-1.3c-1.23,0-2.33,0.48-3.22,1.44l-7.27,7.54l20.36,19.67l7.33-7.68 c0.89-0.89,1.23-2.06,1.23-3.29c0-1.23-0.48-2.4-1.37-3.22L107.73,1.31L107.73,1.31L107.73,1.31z M8.35,5.09h50.2v13.04H14.58 c-0.42,0-0.81,0.18-1.09,0.46c-0.28,0.28-0.46,0.67-0.46,1.09v87.71c0,0.42,0.18,0.81,0.46,1.09c0.28,0.28,0.67,0.46,1.09,0.46 h87.71c0.42,0,0.81-0.18,1.09-0.46c0.28-0.28,0.46-0.67,0.46-1.09V65.1h13.04v48.51c0,2.31-0.95,4.38-2.46,5.89 c-1.51,1.51-3.61,2.46-5.89,2.46H8.35c-2.32,0-4.38-0.95-5.89-2.46C0.95,118,0,115.89,0,113.61V13.44c0-2.32,0.95-4.38,2.46-5.89 C3.96,6.04,6.07,5.09,8.35,5.09L8.35,5.09z M69.62,75.07c-2.67,0.89-5.42,1.71-8.09,2.61c-2.67,0.89-5.35,1.78-8.09,2.67 c-6.38,2.06-9.87,3.22-10.63,3.43c-0.75,0.21-0.27-2.74,1.3-8.91l5.07-19.4l0.42-0.43l20.02,20.02L69.62,75.07L69.62,75.07 L69.62,75.07z M57.01,47.34L88.44,14.7l20.36,19.6L77.02,67.35L57.01,47.34L57.01,47.34z"/></g>
                                     </svg>
                                 </a>
-                                <a class="delete" id="delete_<?php echo $id; ?>" onclick="openDeleteModal('<?php echo $id; ?>')">
+                                <a class="delete" id="delete_<?php echo $id; ?>" onclick="openDeleteModal('<?php echo $id; ?>', '<?php echo $fullName; ?>')">
                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25" height="25" viewBox="0 0 109.484 122.88" enable-background="new 0 0 109.484 122.88" xml:space="preserve">
                                         <g><path fill-rule="evenodd" clip-rule="evenodd" d="M2.347,9.633h38.297V3.76c0-2.068,1.689-3.76,3.76-3.76h21.144 c2.07,0,3.76,1.691,3.76,3.76v5.874h37.83c1.293,0,2.347,1.057,2.347,2.349v11.514H0V11.982C0,10.69,1.055,9.633,2.347,9.633 L2.347,9.633z M8.69,29.605h92.921c1.937,0,3.696,1.599,3.521,3.524l-7.864,86.229c-0.174,1.926-1.59,3.521-3.523,3.521h-77.3 c-1.934,0-3.352-1.592-3.524-3.521L5.166,33.129C4.994,31.197,6.751,29.605,8.69,29.605L8.69,29.605z M69.077,42.998h9.866v65.314 h-9.866V42.998L69.077,42.998z M30.072,42.998h9.867v65.314h-9.867V42.998L30.072,42.998z M49.572,42.998h9.869v65.314h-9.869 V42.998L49.572,42.998z"/></g>
                                     </svg>
@@ -329,7 +321,6 @@
                     echo "<tr><td colspan='5'>No data available</td></tr>";
                 }
 
-                $conn->close();
                 ?>
             </tbody>
             </table>
@@ -393,8 +384,8 @@
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25" height="25" viewBox="0 0 109.484 122.88" enable-background="new 0 0 109.484 122.88" xml:space="preserve">
                     <g><path fill="red" fill-rule="evenodd" clip-rule="evenodd" d="M2.347,9.633h38.297V3.76c0-2.068,1.689-3.76,3.76-3.76h21.144 c2.07,0,3.76,1.691,3.76,3.76v5.874h37.83c1.293,0,2.347,1.057,2.347,2.349v11.514H0V11.982C0,10.69,1.055,9.633,2.347,9.633 L2.347,9.633z M8.69,29.605h92.921c1.937,0,3.696,1.599,3.521,3.524l-7.864,86.229c-0.174,1.926-1.59,3.521-3.523,3.521h-77.3 c-1.934,0-3.352-1.592-3.524-3.521L5.166,33.129C4.994,31.197,6.751,29.605,8.69,29.605L8.69,29.605z M69.077,42.998h9.866v65.314 h-9.866V42.998L69.077,42.998z M30.072,42.998h9.867v65.314h-9.867V42.998L30.072,42.998z M49.572,42.998h9.869v65.314h-9.869 V42.998L49.572,42.998z"/></g>
                 </svg>
-                <div>
-                    <p>Delete this <strong>Row</strong> in the <strong>Table</strong></p>
+                <div id="fullNamePlaceholder">
+                    <p id="fullName">Delete <strong></strong><strong>'s</strong> records in the <strong>Table</strong></p>
                 </div>
             </div>
             <hr>
