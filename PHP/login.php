@@ -28,9 +28,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>License Inventory</title>
-    <link rel="stylesheet" href="../CSS/logins.css">
+    <link rel="stylesheet" href="../CSS/loginsss.css">
+    <link rel="icon" href="../IMAGES/BLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+    <script>
+        setTimeout(function() {
+            var updateMessage = document.getElementById("UpdateMessage");
+            if (updateMessage) {
+                updateMessage.parentNode.removeChild(updateMessage);
+            }
+        }, 3000);
+    </script>
+    <?php 
+        if(isset($_SESSION['error_message'])) {
+        ?>
+            <div id="UpdateMessage">
+                <div id="UpdateMessageChild">
+                    <span id="logo"><i class="fas fa-times"></i></span>
+                    <span id="main-text">
+                        <h3>Invalid Access Key</h3>
+                        <h6>Please enter a valid access key to proceed with authentication.</h6>
+                    </span>
+                </div>
+            </div>
+        <?php
+            unset($_SESSION['error_message']);
+        }
+    ?>
     <main class="Login-MainContent">
         <div class="login-header">
             <h1>PKII</h1>
@@ -39,7 +65,7 @@
         <div class="access-inputP">
             <form action="" method="post">
                 <div class="access-input">
-                    <p>Accesskey<span>*</span></p>
+                    <label>Accesskey<span>*</span></label>
                     <input type="password" name="Accesskey" placeholder="Enter Accesskey" required>
                 </div>
                 <div class="btnsubmit">
@@ -48,11 +74,5 @@
             </form>
         </div>
     </main>
-    <script>
-        <?php if(isset($_SESSION['error_message'])) : ?>
-            alert("<?php echo $_SESSION['error_message']; ?>");
-            <?php unset($_SESSION['error_message']); ?>
-        <?php endif; ?>
-    </script>
 </body>
 </html>

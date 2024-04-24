@@ -121,7 +121,7 @@ body {
 body {
     width: 100%;
     min-height: 100vh;
-    background-image: url('../PHP/Log-Background.png');
+    background-image: url('../IMAGES/Log-Background.png');
     background-size: cover;
     display: flex;
     align-items: center;
@@ -177,13 +177,22 @@ body {
     color: black;
     padding: 0 10px;
     border-radius: 5px;
-    border: 1.5px solid black;
+    border: 1px solid black;
     background-color: transparent;
     color: black;
 }
+.access-input input:focus{
+    border-color: #098dda !important;
+    box-shadow: 0 0 5px 1px rgb(9, 141, 218, 0.5);
+    outline: none;
+}
+.access-input label{
+    font-weight: 500;
+}
 .access-input span{
-    color: blue;
+    color: #1177ff;
     font-weight: 600;
+    font-size: large;
 }
 .btnsubmit{
     width: 100%;
@@ -201,11 +210,57 @@ body {
     color: white;
     background-color: #139f4b;
     cursor: pointer;
-    transition: transform 0.3s ease;
-    box-shadow: 0px 5px 10px 0px rgb(90, 90, 90);
+    transition: transform 0.4s ease;
 }
 .btnsubmit input:active{
     transform: scale(0.98);
+    box-shadow: 0px 5px 10px 0px rgb(90, 90, 90);
+}
+.btnsubmit input:hover{
+    box-shadow: 0px 5px 10px 0px rgb(90, 90, 90);
+}
+
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+#UpdateMessage {
+    position: absolute;
+    top: 25px;
+    left: 37%;
+    transform: translateX(-50%);
+    animation: slideInFromTop 0.5s ease-out forwards;
+    z-index: 9999;
+}
+#UpdateMessageChild {
+    width: 500px;
+    height: 70px;
+    border: 3.5px solid #ff0000;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    gap: 4%;
+    padding: 0 4%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+#logo{
+    color: #ff0000;
+    font-size: 35px;
+}
+#main-text h3{
+    color: #ff0000; 
+    font-weight: 600;
+}
+#main-text h6{
+    color: gray; 
+    font-weight: 500;
 }
 
 @media (max-width: 844px) {
@@ -216,5 +271,29 @@ body {
     .login-header h2{
         font-size: 15px;
         color: #033769;
+    }
+    #UpdateMessage {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) !important;
+        animation: slideInFromTop 0.5s ease-in-out !important;
+    }
+    
+    #UpdateMessageChild {
+        width: 300px !important;
+        height: 60px !important;
+    }
+    
+    #logo {
+        font-size: 25px !important;
+    }
+    
+    #main-text h3 {
+        font-size: 16px !important;
+    }
+    
+    #main-text h6 {
+        font-size: 10px !important;
     }
 }
