@@ -33,7 +33,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../IMAGES/BLogo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../CSS/stylessss.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="../JS/modal.js"></script>
@@ -41,75 +41,10 @@
     <script defer src="../JS/editmodals.js"></script>
     <script defer src="../JS/deletemodals.js"></script>
     <script defer src="../JS/addsuccess.js"></script>
+    <script defer src="../JS/successmessage.js"></script>
     <title>License Inventory</title>
-    <style>
-        @keyframes slideInFromTop {
-            0% {
-                opacity: 0;
-                transform: translateY(-100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0%);
-            }
-        }
-        #UpdateMessage {
-            position: absolute;
-            top: 25px;
-            left: 37%;
-            transform: translateX(-50%);
-            animation: slideInFromTop 0.5s ease-out forwards;
-            z-index: 9999;
-        }
-        #UpdateMessageChild {
-            width: 500px;
-            height: 70px;
-            border: 3.5px solid #00c04b;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            border-radius: 10px;
-            gap: 4%;
-            padding: 0 4%;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-        @media (max-width: 844px) {            
-            #UpdateMessage {
-                position: absolute;
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%) !important;
-                animation: slideInFromTop 0.5s ease-in-out !important;
-            }
-            
-            #UpdateMessageChild {
-                width: 300px !important;
-                height: 60px !important;
-            }
-            
-            #logo {
-                font-size: 25px !important;
-            }
-            
-            #main-text h3 {
-                font-size: 16px !important;
-            }
-            
-            #main-text h6 {
-                font-size: 10px !important;
-            }
-        }
-    </style>
 </head>
 <body>
-    <script>
-        setTimeout(function() {
-            var updateMessage = document.getElementById("UpdateMessage");
-            if (updateMessage) {
-                updateMessage.parentNode.removeChild(updateMessage);
-            }
-        }, 3000);
-    </script>
     <?php
         if (isset($_SESSION['success_message'])) {
             ?>
