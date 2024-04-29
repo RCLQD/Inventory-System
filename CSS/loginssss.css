@@ -163,6 +163,9 @@ body {
     width: 100%;
     height: 100%; 
 }
+.error .access-input input[type="password"] {
+    border: 1px solid red;
+}
 .access-input{
     width: 100%;
     height: 65%;
@@ -182,7 +185,7 @@ body {
     color: black;
 }
 .access-input input:focus{
-    border-color: #098dda !important;
+    border-color: #098dda;
     box-shadow: 0 0 5px 1px rgb(9, 141, 218, 0.5);
     outline: none;
 }

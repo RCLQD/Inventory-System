@@ -28,18 +28,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>License Inventory</title>
-    <link rel="stylesheet" href="../CSS/loginsss.css">
+    <link rel="stylesheet" href="../CSS/loginssss.css">
     <link rel="icon" href="../IMAGES/BLogo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <script>
-        setTimeout(function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            var passwordInput = document.querySelector('input[type="password"]');
             var updateMessage = document.getElementById("UpdateMessage");
-            if (updateMessage) {
-                updateMessage.parentNode.removeChild(updateMessage);
+
+            function removeErrorMessage() {
+                if (updateMessage) {
+                    updateMessage.parentNode.removeChild(updateMessage);
+                }
+                var parent = passwordInput.closest('.error');
+                if (parent) {
+                    parent.classList.remove('error');
+                }
             }
-        }, 3000);
+
+            if (updateMessage) {
+                updateMessage.parentNode.classList.add('error');
+            }
+
+            passwordInput.addEventListener('focus', function() {
+                removeErrorMessage();
+            });
+
+            passwordInput.addEventListener('click', removeErrorMessage);
+        });
     </script>
     <?php 
         if(isset($_SESSION['error_message'])) {
@@ -69,7 +87,7 @@
                     <input type="password" name="Accesskey" placeholder="Enter Accesskey" required>
                 </div>
                 <div class="btnsubmit">
-                    <input type="submit">
+                    <input type="submit" value="Submit">
                 </div>
             </form>
         </div>
