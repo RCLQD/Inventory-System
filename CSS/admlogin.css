@@ -287,21 +287,17 @@ body {
         transform: translateX(-50%) !important;
         animation: slideInFromTop 0.5s ease-in-out !important;
     }
-    
     #UpdateMessageChild {
         width: 300px !important;
         height: 60px !important;
     }
-    
     #logo {
         font-size: 25px !important;
     }
-    
     #main-text h3 {
         font-size: 16px !important;
     }
-    
     #main-text h6 {
-        font-size: 10px !important;
+        font-size: 7px !important;
     }
 }

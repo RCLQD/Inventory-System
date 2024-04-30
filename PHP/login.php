@@ -1,38 +1,38 @@
+<?php
+    require('connection.php');
+    
+    session_start();
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $accesskey = $_POST['Accesskey'];
+
+        $stmt = $conn->prepare("SELECT * FROM adminaccesskey WHERE Accesskey = ?");
+        $stmt->bind_param("s", $accesskey);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $_SESSION['authenticated'] = true;
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $_SESSION['error_message'] = true;
+            header("Location: login.php");
+            exit();
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>License Inventory</title>
-    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="stylesheet" href="../CSS/admlogin.css">
     <link rel="icon" href="../IMAGES/BLogo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <?php
-        require('connection.php');
-        
-        session_start();
-    
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $accesskey = $_POST['Accesskey'];
-    
-            $stmt = $conn->prepare("SELECT * FROM adminaccesskey WHERE Accesskey = ?");
-            $stmt->bind_param("s", $accesskey);
-            $stmt->execute();
-            $result = $stmt->get_result();
-    
-            if ($result->num_rows > 0) {
-                $_SESSION['authenticated'] = true;
-                header("Location: dashboard.php");
-                exit();
-            } else {
-                $_SESSION['error_message'] = "Invalid access key";
-                header("Location: login.php");
-                exit();
-            }
-        }
-    ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var passwordInput = document.querySelector('input[type="password"]');

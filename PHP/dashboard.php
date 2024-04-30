@@ -136,7 +136,6 @@
                 </div>
                 </form>
             </dialog>
-
         </div>
 
         <div class="lic-update">
@@ -228,10 +227,10 @@
                         }        
                     ?>
                         <tr>
-                        <td id="name_<?php echo $id; ?>"><?php echo $row["FName"]; ?></td>
-                        <td id="address_<?php echo $id; ?>"><?php echo $row["Address"]; ?></td>
-                        <td id="licno_<?php echo $id; ?>"><?php echo $row["LicNo"]; ?></td>
-                        <td id="expDate_<?php echo $id; ?>"><?php echo date('F d, Y', strtotime($row["ExpDate"])); ?></td>
+                            <td id="name_<?php echo $id; ?>"><?php echo $row["FName"]; ?></td>
+                            <td id="address_<?php echo $id; ?>"><?php echo $row["Address"]; ?></td>
+                            <td id="licno_<?php echo $id; ?>"><?php echo $row["LicNo"]; ?></td>
+                            <td id="expDate_<?php echo $id; ?>"><?php echo date('F d, Y', strtotime($row["ExpDate"])); ?></td>
                             <td><?php echo $expirationStatus; ?></td>
                             <td width="15%">
                             <div class="ED-container">
@@ -302,10 +301,6 @@
             </div>
             </form>
         </dialog>
-
-        <script>
-
-        </script>
 
         <!-- DELETE INFORMATION -->
         <dialog id="Dmodal" class="DelModal">
