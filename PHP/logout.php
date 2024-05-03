@@ -11,6 +11,6 @@ header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");
 
-header("Location: login.php");
+header("Location: login.php?logout=1");
 exit();
 ?>

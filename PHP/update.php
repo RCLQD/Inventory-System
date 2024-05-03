@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start session if not already started
+session_start();
 require('connection.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

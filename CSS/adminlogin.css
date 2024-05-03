@@ -238,6 +238,26 @@ body {
         transform: translateY(0%);
     }
 }
+#LogoutMessage {
+    position: absolute;
+    top: 25px;
+    left: 45%;
+    transform: translateX(-50%);
+    animation: slideInFromTop 0.5s ease-out forwards;
+    z-index: 9999;
+}
+#LogoutMessageChild {
+    width: 200px;
+    height: 70px;
+    background-color: #23395d;
+    display: grid;
+    place-items: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
 #UpdateMessage {
     position: absolute;
     top: 25px;

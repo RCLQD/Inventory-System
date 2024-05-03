@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
 
@@ -9,6 +11,10 @@ if(isset($_GET['id'])) {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
+
+    if ($stmt->execute()) {
+        $_SESSION['delete_success'] = true;
+    }
 
     $stmt->close();
 

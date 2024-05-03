@@ -28,41 +28,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>License Inventory</title>
-    <link rel="stylesheet" href="../CSS/admlogin.css">
+    <link rel="stylesheet" href="../CSS/adminlogin.css">
     <link rel="icon" href="../IMAGES/BLogo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script defer src="../JS/loginerror.js"></script>
+    <script defer src="../JS/logoutmessage.js"></script>
 </head>
 <body>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var passwordInput = document.querySelector('input[type="password"]');
-            var updateMessage = document.getElementById("UpdateMessage");
-    
-            function removeErrorMessage() {
-                if (updateMessage) {
-                    updateMessage.parentNode.removeChild(updateMessage);
-                }
-                var parent = passwordInput.closest('.error');
-                if (parent) {
-                    parent.classList.remove('error');
-                }
-            }
-    
-            if (updateMessage) {
-                updateMessage.parentNode.classList.add('error');
-                passwordInput.placeholder = "Invalid Access Key";
-            }
-    
-            passwordInput.addEventListener('focus', function() {
-                removeErrorMessage();
-            });
-    
-            passwordInput.addEventListener('click', function() {
-                passwordInput.placeholder = "Enter Accesskey";
-                removeErrorMessage();
-            });
-        });
-    </script>
     <?php 
         if(isset($_SESSION['error_message'])) {
     ?>
@@ -77,6 +49,16 @@
             </div>
     <?php
             unset($_SESSION['error_message']);
+        }
+
+        if (isset($_GET['logout']) && $_GET['logout'] == 1) {
+    ?>  
+            <div id="LogoutMessage">
+                <div id="LogoutMessageChild">
+                    <p>Logged Out!</p>
+                </div>
+            </div>
+    <?php 
         }
     ?>
     <main class="Login-MainContent">

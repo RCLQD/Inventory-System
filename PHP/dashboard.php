@@ -75,6 +75,21 @@
             <?php
             unset($_SESSION['update_success_message']);
         }
+
+        if (isset($_SESSION['delete_success'])) {
+            ?>
+                <div id="UpdateMessage">
+                    <div id="UpdateMessageChild" style="border: 3.5px solid #ff0000;">
+                        <span id="logo" style="color: #ff0000; font-size: 35px;"><i class="fas fa-check"></i></span>
+                        <span id="main-text">
+                            <h3 style="color: #ff0000; font-weight: 600;">Deleted Successfully</h3>
+                            <h6 style="color: gray; font-weight: 600;">Driver's record has been deleted successfully.</h6>
+                        </span>
+                    </div>
+                </div>
+            <?php
+            unset($_SESSION['delete_success']);
+        }
     ?>
     <main>
         <div class="header">
