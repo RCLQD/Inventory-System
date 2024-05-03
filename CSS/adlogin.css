@@ -189,6 +189,15 @@ body {
         font-size: 15px;
         color: #033769;
     }
+    #LogoutMessage {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) !important;
+    }
+    #LogoutMessageChild {
+        width: 150px !important;
+        height: 50px !important;
+    }
     #UpdateMessage {
         position: absolute;
         top: 20px;
